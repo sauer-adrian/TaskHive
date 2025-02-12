@@ -6,7 +6,7 @@
       class="flex justify-between items-center p-3 border rounded-lg"
     >
       <span>{{ task.text }}</span>
-      <UButton @click="$emit('delete', task.id)" color="red">Delete</UButton>
+      <UButton @click="$emit('delete', task.id)" color="error" icon="i-lucide-trash-2" variant="link" class="cursor-pointer"/>
     </div>
   </div>
 </template>
