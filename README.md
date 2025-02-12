@@ -35,4 +35,4 @@ Then, open http://localhost:3000 in your browser.
 
 ## 📜 License
 
-This project is licensed under the MIT License – see the `LICENSE` file for details.
+This project is licensed under the MIT License.
