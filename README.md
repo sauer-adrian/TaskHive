@@ -10,14 +10,14 @@ _A modern, sleek, and intuitive to-do list web app built with Nuxt 3._
 Make sure you have the following installed:
 
 -   **Node.js** (latest LTS recommended)
--   **pnpm** (or npm/yarn, depending on your preference)
+-   **npm** (or pnpm/yarn, depending on your preference)
 
 ### Installation
 
 Clone the repository and install dependencies:
 
-`git clone https://github.com/your-username/taskhive.git`
-`cd taskhive`
+`git clone https://github.com/sauer-adrian/TaskHive.git`
+`cd TaskHive`
 `npm install` 
 
 ### Development Server
