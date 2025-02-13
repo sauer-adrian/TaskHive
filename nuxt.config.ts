@@ -23,4 +23,4 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/main.css']
 })
-//TODO: Look into the manifest and configurate the PWA better, so it works!
+//TODO: Look into the manifest and configurate the PWA better, so it works...
