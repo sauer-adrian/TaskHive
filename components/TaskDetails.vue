@@ -41,7 +41,6 @@ const emit = defineEmits(['update:tasks', 'update:open'])
 const editableTask = computed({
   get: () => ({ ...props.task }),
   set: (updatedTask) => {
-    // No need to emit here, just update the task on saveChanges
   }
 });
 
