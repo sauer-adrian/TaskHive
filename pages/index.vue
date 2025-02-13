@@ -1,27 +1,16 @@
 <template>
-  <div class="flex justify-center items-center min-h-screen">
+  <div class="flex justify-center min-h-screen pt-5">
     <UContainer class="w-full max-w-4xl px-4">
-      <UInput
-        v-model="task"
-        :placeholder="randomPlaceholder"
-        :ui="{ trailing: 'pe-1' }"
-        class="w-full"
-        size="xl"
-        @keyup.enter="addTask"
-      >
+      <UInput v-model="task" :placeholder="randomPlaceholder" :ui="{ trailing: 'pe-1' }" class="w-full" size="xl"
+        @keyup.enter="addTask">
         <template v-if="task?.length" #trailing>
-          <UButton
-            color="primary"
-            variant="link"
-            size="xl"
-            icon="i-lucide-square-plus"
-            aria-label="Add Task"
-            @click="addTask"
-          />
+          <UButton color="primary" variant="link" size="xl" icon="i-lucide-square-plus" aria-label="Add Task"
+            @click="addTask" />
         </template>
       </UInput>
 
-      <TaskList :tasks="tasks" @delete="deleteTask" class="mt-4"/>
+      <USeparator size="xl" icon="i-simple-icons:hive" class="pt-5 pb-5" />
+      <TaskList :tasks="tasks" @update:tasks="updateTaskList" />
     </UContainer>
   </div>
 </template>
@@ -30,8 +19,13 @@
 import { ref, onMounted } from 'vue'
 import { TaskList } from '#components'
 
-const task = ref('');
-const tasks = ref<{ id: number; text: string }[]>([]);
+const task = ref('')
+const tasks = ref<{ 
+  id: number; 
+  taskTitle: string; 
+  description: string; 
+  completed: boolean; 
+}[]>([])
 
 // Define an array of placeholders
 const placeholders = [
@@ -53,12 +47,12 @@ const placeholders = [
 ];
 
 // Generate a random placeholder when the component is mounted
-const randomPlaceholder = ref('');
+const randomPlaceholder = ref('')
 
 // On mounted, pick a random placeholder from the list
 onMounted(() => {
   randomPlaceholder.value = placeholders[Math.floor(Math.random() * placeholders.length)];
-  
+
   const savedTasks = localStorage.getItem('HiveTasks');
   if (savedTasks) {
     tasks.value = JSON.parse(savedTasks);
@@ -74,18 +68,23 @@ const saveTasks = () => {
 const addTask = () => {
   if (!task.value.trim()) return;
 
-  const newTask = { id: Date.now(), text: task.value };
+  const newTask = { 
+    id: Date.now(), 
+    taskTitle: task.value, 
+    description: 'No description provided.', // Default description (optional)
+    completed: false // Default to not completed
+  };
+
   tasks.value.push(newTask);
   saveTasks();
   task.value = '';
 };
 
-// Delete a task
-const deleteTask = (id: number) => {
-  tasks.value = tasks.value.filter(task => task.id !== id);
-  saveTasks();
+// Update tasks when TaskDetails emits updated task list
+const updateTaskList = (updatedTasks: any[]) => {
+  tasks.value = updatedTasks;
+  saveTasks(); // Save the updated task list to localStorage
 };
 </script>
 
-<style>
-</style>
+<style></style>
