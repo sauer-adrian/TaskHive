@@ -32,6 +32,7 @@ Then, open http://localhost:3000 in your browser.
 
 -   **Nuxt.js 3** – The framework for building Vue-based applications.
 -   **Nuxt UI (v3.0.0-alpha.12)** – A powerful UI module for rapid development.
+-   **@vite-pwa/nuxt** - Zero-config PWA Plugin for Nuxt
 
 ## 📜 License
 
